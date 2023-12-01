@@ -1,0 +1,3 @@
+interface EnergyBorder {
+  [key: string]: {}
+}
