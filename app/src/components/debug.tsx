@@ -11,9 +11,11 @@ export const Debug = () => {
 
   return (
       <section>
-        <p>islandState: {islandState}</p>
-        <p>energyState: {energyState}</p>
-        <p>sleepTimeState: {sleepTimeState}</p>
+        <div className={'fixed right-0'}>
+          <p>islandState: {islandState}</p>
+          <p>energyState: {energyState}</p>
+          <p>sleepTimeState: {sleepTimeState}</p>
+        </div>
       </section>
   )
 }

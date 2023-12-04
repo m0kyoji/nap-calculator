@@ -2,12 +2,12 @@
 import Slider from "@/components/slider";
 import { ISLANDS } from "@/constant/islands";
 import { MAX_SLEEP_TIME } from "@/constant/sleep";
-import { calcTimeAtom, inputEnergyAtom, inputSleepTimeAtom, selectedIslandAtom } from "@/lib/atoms";
+import { UseDisplaySleepTime } from "@/hooks/useDisplaySleepTime";
+import { inputEnergyAtom, inputSleepTimeAtom, selectedIslandAtom } from "@/lib/atoms";
 import { useAtom } from 'jotai'
 import React, { useEffect, useState } from 'react'
 
 export const InputForm = () => {
-  const [timeState, setTimeState] = useAtom(calcTimeAtom)
   const [, setIslandState] = useAtom(selectedIslandAtom);
   const [, setEnergyState] = useAtom(inputEnergyAtom);
   const [sleepTimeState, setSleepTimeState] = useAtom(inputSleepTimeAtom);
@@ -26,13 +26,10 @@ export const InputForm = () => {
 
   const handleRangeChange = (event: any) => {
     setSleepTimeState(event.target.value);
-    const hours = Math.floor(event.target.value / 60);
-    const minutes = event.target.value % 60;
-    setTimeState({hours: hours, minutes: minutes });
   }
 
   return (
-      <div>
+      <div className={'flex flex-col justify-center items-center'}>
         <div>
           <div>
             <div>
@@ -67,10 +64,10 @@ export const InputForm = () => {
                 max={MAX_SLEEP_TIME}
                 onChange={(e) => handleRangeChange(e)}
             ></input>
-            <p>{`${timeState.hours}時間${timeState.minutes}分`}</p>
+            <p>{`${UseDisplaySleepTime().hours}時間${UseDisplaySleepTime().minutes}分`}</p>
           </div>
         </div>
-        <Slider items={islands} />
+        {/*<Slider items={islands} />*/}
       </div>
   )
 }

@@ -1,6 +1,7 @@
 import { Debug } from "@/components/debug";
-import { Result } from "@/components/result";
+import { Header } from "@/components/header";
 import { InputForm } from "@/components/inputForm";
+import { Result } from "@/components/result";
 
 export default function Home() {
 
@@ -8,9 +9,7 @@ export default function Home() {
     <main>
       <Debug/>
       <section>
-        <div>
-          <p>おひるね計算機</p>
-        </div>
+        <Header/>
       </section>
       <section>
         <InputForm/>
