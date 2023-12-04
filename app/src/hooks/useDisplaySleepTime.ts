@@ -1,14 +1,11 @@
-import { inputSleepTimeAtom } from "@/lib/atoms";
-import { useAtom } from "jotai/index";
 import { useEffect, useState } from "react";
 
-export const UseDisplaySleepTime = () => {
+export const UseDisplaySleepTime = (time: number) => {
   const [timeState, setTimeState] = useState<{hours: number, minutes: number}>({hours: 0, minutes: 0})
-  const [sleepTimeState] = useAtom(inputSleepTimeAtom);
 
   useEffect(() => {
-    setTimeState({hours: Math.floor(sleepTimeState / 60), minutes: sleepTimeState % 60});
-  },[sleepTimeState]);
+    setTimeState({hours: Math.floor(time / 60), minutes: time % 60});
+  },[time]);
 
   return timeState;
 }
