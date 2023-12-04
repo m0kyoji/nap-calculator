@@ -27,7 +27,7 @@ export const Result = () => {
   const requireSleepTime = (islandId: number, borderKey: number) => {
     const island = ISLANDS.find((island) => island.id == islandId) || ISLANDS[0]
     const borderValues: {[key: string]: number} = ENERGY_BORDER[island.name];
-    return Math.round((borderValues[borderKey] / energyState) * 510 / 100) || 0;
+    return Math.round((borderValues[borderKey] / energyState) * MAX_SLEEP_TIME / 100) || 0;
   }
 
   return (
@@ -38,7 +38,7 @@ export const Result = () => {
               出会うかもしれないポケモンの数
             </p>
             <div className="font-normal text-gray-700 dark:text-gray-400">
-              <div className="rounded-2xl bg-gray-50 pt-3 pb-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+              <div className="rounded-2xl bg-gray-50 pt-3 pb-6 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                 <div className={'flex justify-center'}>
                   <p className={'pb-2 mr-1 flex justify-center items-center'}>
                     <BsSun/>
@@ -60,7 +60,7 @@ export const Result = () => {
                   </p>
                 </div>
               </div>
-              <div className="mt-1 rounded-2xl bg-gray-50 pt-3 pb-8 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+              <div className="mt-1 rounded-2xl bg-gray-50 pt-3 pb-6 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                 <div className={'flex justify-center'}>
                   <div className={'pb-2 mr-1 flex justify-center items-center'}>
                     <BsFillMoonStarsFill/>
@@ -80,7 +80,7 @@ export const Result = () => {
                     <span>ポケモン数: </span>
                     <span>{useCalcEncounterNumb(islandState, calcNightSleepTime(sleepTimeState), energyState)}匹</span>
                   </p>
-                  <p className={'font-medium text-xs text-neutral-500 block'}>{`最低で約 ${UseDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime(sleepTimeState), energyState))).hours}時間${UseDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime(sleepTimeState), energyState))).minutes}分 寝る必要があります`}</p>
+                  <p className={'mt-2 font-medium text-xs text-neutral-500 block'}>{`最低で約 ${UseDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime(sleepTimeState), energyState))).hours}時間${UseDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime(sleepTimeState), energyState))).minutes}分 寝る必要があります`}</p>
                 </div>
               </div>
             </div>

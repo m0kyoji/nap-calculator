@@ -27,13 +27,13 @@ export const InputForm = () => {
       <div className={'flex flex-col justify-center items-center'}>
         <div>
           <div className={'py-4'}>
-            <label className="block text-gray-700 text-sm font-bold text-center mb-2" htmlFor="select-island">
+            <label className="block text-gray-700 text-sm font-bold text-center mb-2 dark:text-white" htmlFor="select-island">
               どこで寝る？
             </label>
             <select
                 defaultValue="greengrass"
                 onChange={(event) => handleSelectChange(event)}
-                className={'block appearance-none w-full bg-white hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline'}
+                className={'block appearance-none w-full bg-white hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline text-neutral-800'}
             >
               {
                 ISLANDS.map((island: IslandsProps, index: number) => (
@@ -43,7 +43,7 @@ export const InputForm = () => {
             </select>
           </div>
           <div className={'py-4'}>
-            <label className="block text-gray-700 text-sm font-bold text-center	mb-2" htmlFor="kabigon-power">
+            <label className="block text-gray-700 text-sm font-bold text-center	mb-2 dark:text-white" htmlFor="kabigon-power">
               今のカビゴンパワー
             </label>
             <input
@@ -55,7 +55,7 @@ export const InputForm = () => {
             />
           </div>
           <div className={'py-4'}>
-            <label className="block text-gray-700 text-sm font-bold text-center mb-2" htmlFor="sleep-time">
+            <label className="block text-gray-700 text-sm font-bold text-center mb-2 dark:text-white" htmlFor="sleep-time">
               どのくらい寝る？
             </label>
             <input
