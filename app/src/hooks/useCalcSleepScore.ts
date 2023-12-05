@@ -8,5 +8,5 @@ export const UseCalcSleepScore = (sleepTime: number) => {
     setSleepScoreState(sleepTime / MAX_SLEEP_TIME * 100);
   }, [sleepTime])
 
-  return parseInt(String(sleepScoreState));
+  return sleepScoreState;
 }

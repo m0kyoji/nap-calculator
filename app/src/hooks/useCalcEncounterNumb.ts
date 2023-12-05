@@ -13,5 +13,5 @@ export const useCalcEncounterNumb = (islandId: number, sleepTime: number, energy
     setNumState(parseInt(num[0], 10));
   },[islandId, energy, sleepTime])
 
-  return Math.round(numState);
+  return numState;
 }

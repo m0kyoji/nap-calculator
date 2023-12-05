@@ -13,7 +13,6 @@ import React from 'react'
 import { BsFillMoonStarsFill } from "react-icons/bs";
 import { BsSun } from "react-icons/bs";
 
-
 export const Result = () => {
 
   const [sleepTimeState] = useAtom(inputSleepTimeAtom);
@@ -48,11 +47,11 @@ export const Result = () => {
                 <div>
                   <p>
                     <span>睡眠スコア: </span>
-                    <span>{UseCalcSleepScore(sleepTimeState)}</span>
+                    <span>{Math.round(UseCalcSleepScore(sleepTimeState))}</span>
                   </p>
                   <p>
                     <span>ねむけパワー: </span>
-                    <span>{UseCalcNemukePower(sleepTimeState, energyState).toLocaleString()}</span>
+                    <span>{Math.round(UseCalcNemukePower(sleepTimeState, energyState)).toLocaleString()}</span>
                   </p>
                   <p>
                     <span>ポケモン数: </span>
@@ -70,11 +69,11 @@ export const Result = () => {
                 <div>
                   <p>
                     <span>睡眠スコア: </span>
-                    <span>{UseCalcSleepScore(calcNightSleepTime(sleepTimeState))}</span>
+                    <span>{Math.round(UseCalcSleepScore(calcNightSleepTime(sleepTimeState)))}</span>
                   </p>
                   <p>
                     <span>ねむけパワー: </span>
-                    <span>{UseCalcNemukePower(calcNightSleepTime(sleepTimeState), energyState).toLocaleString()}</span>
+                    <span>{Math.round(UseCalcNemukePower(calcNightSleepTime(sleepTimeState), energyState)).toLocaleString()}</span>
                   </p>
                   <p>
                     <span>ポケモン数: </span>

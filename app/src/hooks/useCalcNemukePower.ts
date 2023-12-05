@@ -8,5 +8,5 @@ export const UseCalcNemukePower = (sleepTime: number, energy: number) => {
     setNemukePowerState((energy) * (sleepTime / MAX_SLEEP_TIME * 100));
   },[energy, sleepTime])
 
-  return Math.round(nemukePowerState);
+  return nemukePowerState;
 }
