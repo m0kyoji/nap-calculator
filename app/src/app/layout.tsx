@@ -17,12 +17,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <Head>
-        <title>おひるね計算機</title>
-        <meta name="description" content="おひるね計算機"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="icon" href="/favicon.ico"/>
-      </Head>
       <body className={inter.className}>{children}</body>
     </html>
   )
