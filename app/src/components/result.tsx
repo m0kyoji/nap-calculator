@@ -33,13 +33,13 @@ export const Result = () => {
   return (
       <>
         <div className={'mt-8 flex flex-col justify-center items-center'}>
-          <div className={'text-md font-light'}>おすすめする、おひる寝の長さ</div>
-          <div id={'recommendedTime'} className={'flex justify-center items-end gap-1 relative px-3'}>
-            <span className={'text-4xl tracking-wide'}>{'4'}</span>
-            <span className={'text-2xl tracking-wide'}>時間</span>
-            <span className={'text-4xl tracking-wide'}>{'15'}</span>
-            <span className={'text-2xl tracking-wide'}>分</span>
-          </div>
+          {/*<div className={'text-md font-light'}>おすすめする、おひる寝の長さ</div>*/}
+          {/*<div id={'recommendedTime'} className={'flex justify-center items-end gap-1 relative px-3'}>*/}
+          {/*  <span className={'text-4xl tracking-wide'}>{'4'}</span>*/}
+          {/*  <span className={'text-2xl tracking-wide'}>時間</span>*/}
+          {/*  <span className={'text-4xl tracking-wide'}>{'15'}</span>*/}
+          {/*  <span className={'text-2xl tracking-wide'}>分</span>*/}
+          {/*</div>*/}
 
           <div className={'text-md font-light mt-11'}>
             <p className={'text-center'}>出会えるかもしれない</p>
