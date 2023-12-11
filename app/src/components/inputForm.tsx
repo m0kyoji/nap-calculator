@@ -38,7 +38,7 @@ export const InputForm = () => {
           </select>
         </div>
         <div className={'w-full max-w-sm'}>
-          <label className="block text-gray-700 text-md font-light text-centermb-2" htmlFor="kabigon-power">
+          <label className="block text-gray-700 text-md font-light text-center mb-2" htmlFor="kabigon-power">
             今のカビゴンパワーは？
           </label>
           <input
