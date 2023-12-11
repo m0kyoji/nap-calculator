@@ -25,7 +25,7 @@ export const InputForm = () => {
   return (
       <div className={'pt-8 px-10 pb-10 bg-white w-auto flex flex-col justify-center items-center rounded-none sm:rounded-3xl shadow-lg gap-y-8'} style={{maxWidth: '640px', margin: '0 auto'}}>
         <div className={'w-full max-w-sm'}>
-          <label className="block text-gray-700 text-md font-light text-center mb-2 dark:text-white" htmlFor="select-island">
+          <label className="block text-gray-700 text-md font-light text-center mb-2" htmlFor="select-island">
             どこで寝る？
           </label>
           <select
@@ -38,7 +38,7 @@ export const InputForm = () => {
           </select>
         </div>
         <div className={'w-full max-w-sm'}>
-          <label className="block text-gray-700 text-md font-light text-center	mb-2 dark:text-white" htmlFor="kabigon-power">
+          <label className="block text-gray-700 text-md font-light text-centermb-2" htmlFor="kabigon-power">
             今のカビゴンパワーは？
           </label>
           <input
