@@ -2,28 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 43, 43, 43;
-  --background-rgb: 240, 240, 208;
+/*:root {*/
+/*  --foreground-rgb: 43, 43, 43;*/
+/*  --background-rgb: 240, 240, 208;*/
+/*}*/
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --foreground-rgb: 255, 255, 255;*/
+/*    --background-rgb: 43, 43, 43;*/
+/*  }*/
+/*}*/
+
+/*body {*/
+/*  color: rgb(var(--foreground-rgb));*/
+/*  background: rgb(var(--background-rgb));*/
+/*}*/
+
+/*@layer base {*/
+/*  input[type='number']::-webkit-outer-spin-button,*/
+/*  input[type='number']::-webkit-inner-spin-button,*/
+/*  input[type='number'] {*/
+/*    -webkit-appearance: none;*/
+/*    -moz-appearance: textfield !important;*/
+/*  }*/
+/*}*/
+
+#recommendedTime:before {
+  content: "";
+  display: block;
+  background-color: white;
+  height: 4px;
+  border-radius: 4px;
+  width: 100%;
+  position: absolute;
+  bottom: -0.5em;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 43, 43, 43;
-  }
+#timeSelectSlider:before {
+  content: '0分';
+  position: absolute;
+  top: -2em;
+  left: 0;
+  font-weight: 300;
+  font-size: 0.9em;
+}
+#timeSelectSlider:after {
+  content: '8時間30分';
+  position: absolute;
+  top: -2em;
+  right: 0;
+  font-weight: 300;
+  font-size: 0.9em;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2em;
+  width: 1em;
+  background-color: #545454;
+  border-radius: 8px;
 }
 
-@layer base {
-  input[type='number']::-webkit-outer-spin-button,
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number'] {
-    -webkit-appearance: none;
-    -moz-appearance: textfield !important;
-  }
+/* Thumb: Firefox */
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  height: 2em;
+  width: 1em;
+  background-color: #545454;
+  border-radius: 8px;
 }

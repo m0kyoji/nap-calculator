@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css/bundle'
+import { EffectFade } from 'swiper/modules';
 
 type SlideItem = {
   id: number
@@ -30,19 +31,20 @@ const Slider = ({ items }: SliderProps) => {
   },[islandState])
 
   return (
-      <div style={{width: '100vw'}}>
+      <div style={{width: '100vw', height: '100vh'}}>
         <Swiper
+            modules={[EffectFade]}
             ref={swiperRef}
             slidesPerView={1}
-            spaceBetween={'20%'}
             centeredSlides={true}
             allowTouchMove={false}
+            effect={'fade'}
             pagination={{
               clickable: true,
             }}>
           {items.map((item) => (
-              <SwiperSlide key={item.id} style={{width: 200, height: 200}}>
-                <Image src={item.content} alt="island_images" width={200} height={200} style={{margin: "0 auto"}}/>
+              <SwiperSlide key={item.id} style={{width: '100vw', height: '100vh'}}>
+                <Image src={item.content} alt="island_images" fill style={{ objectFit: 'contain' }}/>
               </SwiperSlide>
           ))}
         </Swiper>
