@@ -30,26 +30,15 @@ export const Result = () => {
   }
 
   const getNapLength = useMemo(() => {
-    console.log("exec!")
     return bestNapLength(energyState, islandState)
   },[energyState, islandState])
-
-  console.log(getNapLength[0][0].value);
-  console.log(getNapLength[0][1].value);
-  console.log(convertSleepinessPowerToTime(getNapLength[0][0].value, energyState))
 
   const getBestNapLength = useMemo(() => {
     const napLength = getNapLength;
     const dayTime:number = napLength[0][0].value;
     const night:number = napLength[0][1].value;
     const redundantTime:number = (energyState * 100) - (night + dayTime);
-    console.log(`napLength: ${napLength[0][0].value}/${napLength[0][1].value}`)
-    console.log(`total: ${(energyState * 100)}`)
-    console.log(`dayTime: ${dayTime}`)
-    console.log(`night: ${night}`)
-    console.log(`redundantTime: ${redundantTime}`)
-
-    setSleepTimeState(convertSleepinessPowerToTime(dayTime + (redundantTime/2), energyState)+1);
+    setSleepTimeState(convertSleepinessPowerToTime(dayTime + (redundantTime/2), energyState));
     return dayTime + (redundantTime/2);
   },[energyState, islandState])
 
@@ -57,10 +46,10 @@ export const Result = () => {
       <>
         <div className={'mt-8 flex flex-col justify-center items-center'}>
           <div className={'text-md font-light'}>おすすめする、おひる寝の長さ</div>
-          <div id={'recommendedTime'} className={'flex justify-center items-end gap-1 relative px-3'}>
+          <div id={'recommendedTime'} className={'mt-1 flex justify-center items-end gap-1 relative px-3'}>
             <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).hours || 0}</span>
             <span className={'text-2xl tracking-wide'}>時間</span>
-            <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).minutes + 1 || 0}</span>
+            <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).minutes || 0}</span>
             <span className={'text-2xl tracking-wide'}>分</span>
           </div>
 
