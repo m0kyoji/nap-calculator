@@ -39,6 +39,7 @@ const Slider = ({ items }: SliderProps) => {
             centeredSlides={true}
             allowTouchMove={false}
             effect={'fade'}
+            fadeEffect={{crossFade: true}}
             pagination={{
               clickable: true,
             }}>

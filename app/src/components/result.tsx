@@ -4,6 +4,7 @@ import { ENERGY_BORDER } from "@/constant/energy";
 import { ISLANDS } from "@/constant/islands";
 import { MAX_SLEEP_TIME } from "@/constant/sleep";
 import { bestNapLength } from "@/functions/napLength";
+import { convertSleepinessPowerToTime, convertToHoursAndMinutes } from "@/functions/sleepTime";
 import { useCalcEncounterNumb } from "@/hooks/useCalcEncounterNumb";
 import { UseCalcNemukePower } from "@/hooks/useCalcNemukePower";
 import { UseCalcSleepScore } from "@/hooks/useCalcSleepScore";
@@ -16,7 +17,7 @@ import { BsSun } from "react-icons/bs";
 
 export const Result = () => {
 
-  const [sleepTimeState] = useAtom(inputSleepTimeAtom);
+  const [sleepTimeState, setSleepTimeState] = useAtom(inputSleepTimeAtom);
   const [energyState] = useAtom(inputEnergyAtom);
   const [islandState] = useAtom(selectedIslandAtom);
 
@@ -28,18 +29,40 @@ export const Result = () => {
     return Math.round((borderValues[borderKey] / energyState) * MAX_SLEEP_TIME / 100) || 0;
   }
 
-  console.log(bestNapLength(energyState, islandState));
+  const getNapLength = useMemo(() => {
+    console.log("exec!")
+    return bestNapLength(energyState, islandState)
+  },[energyState, islandState])
+
+  console.log(getNapLength[0][0].value);
+  console.log(getNapLength[0][1].value);
+  console.log(convertSleepinessPowerToTime(getNapLength[0][0].value, energyState))
+
+  const getBestNapLength = useMemo(() => {
+    const napLength = getNapLength;
+    const dayTime:number = napLength[0][0].value;
+    const night:number = napLength[0][1].value;
+    const redundantTime:number = (energyState * 100) - (night + dayTime);
+    console.log(`napLength: ${napLength[0][0].value}/${napLength[0][1].value}`)
+    console.log(`total: ${(energyState * 100)}`)
+    console.log(`dayTime: ${dayTime}`)
+    console.log(`night: ${night}`)
+    console.log(`redundantTime: ${redundantTime}`)
+
+    setSleepTimeState(convertSleepinessPowerToTime(dayTime + (redundantTime/2), energyState)+1);
+    return dayTime + (redundantTime/2);
+  },[energyState, islandState])
 
   return (
       <>
         <div className={'mt-8 flex flex-col justify-center items-center'}>
-          {/*<div className={'text-md font-light'}>おすすめする、おひる寝の長さ</div>*/}
-          {/*<div id={'recommendedTime'} className={'flex justify-center items-end gap-1 relative px-3'}>*/}
-          {/*  <span className={'text-4xl tracking-wide'}>{'4'}</span>*/}
-          {/*  <span className={'text-2xl tracking-wide'}>時間</span>*/}
-          {/*  <span className={'text-4xl tracking-wide'}>{'15'}</span>*/}
-          {/*  <span className={'text-2xl tracking-wide'}>分</span>*/}
-          {/*</div>*/}
+          <div className={'text-md font-light'}>おすすめする、おひる寝の長さ</div>
+          <div id={'recommendedTime'} className={'flex justify-center items-end gap-1 relative px-3'}>
+            <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).hours || 0}</span>
+            <span className={'text-2xl tracking-wide'}>時間</span>
+            <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).minutes + 1 || 0}</span>
+            <span className={'text-2xl tracking-wide'}>分</span>
+          </div>
 
           <div className={'text-md font-light mt-11'}>
             <p className={'text-center'}>出会えるかもしれない</p>

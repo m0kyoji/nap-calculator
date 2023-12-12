@@ -5,15 +5,16 @@ export const DrawWaves = (props: {num: number}) => {
       <>
         {
           [...Array(props.num)].map((_, i) => (
-              <Wave fill='#8FC5FF33'
+              <Wave fill='#007bff'
                     paused={false}
                     style={{
                       display: 'inline-block',
                       position: 'absolute',
                       zIndex: 10 - i,
+                      height: '30vh'
                     }}
                     options={{
-                      height: 10 * i,
+                      height: 20,
                       amplitude: 7 * Math.floor(Math.random() * 10) + 1,
                       speed: 0.15,
                       points: 3 + i,
