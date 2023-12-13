@@ -1,17 +1,17 @@
 import Wave from "react-wavify";
 
-export const DrawWaves = (props: {num: number}) => {
+export const DrawWaves = (props: {num: number, height: string, color: string}) => {
   return (
       <>
         {
           [...Array(props.num)].map((_, i) => (
-              <Wave fill='#007bff'
+              <Wave fill={props.color}
                     paused={false}
                     style={{
                       display: 'inline-block',
                       position: 'absolute',
                       zIndex: 10 - i,
-                      height: '30vh'
+                      height: props.height
                     }}
                     options={{
                       height: 20,
