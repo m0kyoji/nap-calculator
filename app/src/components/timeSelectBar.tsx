@@ -17,7 +17,7 @@ export const TimeSelectBar = () => {
             className={'mt-10 py-4 px-6 w-full max-w-sm bg-white rounded-none lg:rounded-3xl shadow-lg'}
             style={{marginLeft: 'auto', marginRight: 'auto', maxWidth: '1024px'}}
         >
-          <label className="block text-gray-700 text-sm text-center dark:text-white font-thin" htmlFor="sleep-time">
+          <label className="block text-gray-700 text-sm text-center font-thin" htmlFor="sleep-time">
             sleep time
           </label>
           <div className={'text-center font-medium'}>
@@ -26,11 +26,10 @@ export const TimeSelectBar = () => {
             <span className={'text-2xl'}>{UseDisplaySleepTime(sleepTimeState).minutes}</span>
             <span className={'text-md'}>分</span>
           </div>
-          <div className={'mt-4'}>
+          <div id={'timeSelectSlider'} className={'mt-4 relative'}>
             <input
-                id={'timeSelectSlider'}
                 type="range"
-                className="relative slider w-full h-6 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+                className="slider w-full h-6 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700"
                 value={sleepTimeState}
                 min={0}
                 max={MAX_SLEEP_TIME}

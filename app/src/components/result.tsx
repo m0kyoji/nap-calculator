@@ -11,7 +11,7 @@ import { UseCalcSleepScore } from "@/hooks/useCalcSleepScore";
 import { UseDisplaySleepTime } from "@/hooks/useDisplaySleepTime";
 import { inputEnergyAtom, inputSleepTimeAtom, selectedIslandAtom } from "@/lib/atoms";
 import { useAtom } from 'jotai'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { BsMoonStars } from "react-icons/bs";
 import { BsSun } from "react-icons/bs";
 
@@ -38,8 +38,11 @@ export const Result = () => {
     const dayTime:number = napLength[0][0].value;
     const night:number = napLength[0][1].value;
     const redundantTime:number = (energyState * 100) - (night + dayTime);
-    setSleepTimeState(convertSleepinessPowerToTime(dayTime + (redundantTime/2), energyState));
     return dayTime + (redundantTime/2);
+  },[energyState, islandState])
+
+  useEffect(() => {
+    setSleepTimeState(convertSleepinessPowerToTime(getBestNapLength, energyState));
   },[energyState, islandState])
 
   return (

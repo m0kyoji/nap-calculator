@@ -20,14 +20,10 @@ const Slider = ({ items }: SliderProps) => {
   const [islandState] = useAtom(selectedIslandAtom);
   const swiperRef: any = useRef(null);
 
-  const changeSlide = (index: number) => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideTo(index)
-    }
-  };
-
   useEffect(() => {
-    changeSlide(islandState - 1)
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideTo(islandState - 1)
+    }
   },[islandState])
 
   return (
@@ -43,9 +39,9 @@ const Slider = ({ items }: SliderProps) => {
             pagination={{
               clickable: true,
             }}>
-          {items.map((item) => (
+          {items.map((item, _i) => (
               <SwiperSlide key={item.id} style={{width: '100vw', height: '100vh'}}>
-                <Image src={item.content} alt="island_images" fill style={{ objectFit: 'contain' }}/>
+                <Image src={item.content} priority={_i == 0} alt="island_images" fill style={{ objectFit: 'contain' }}/>
               </SwiperSlide>
           ))}
         </Swiper>

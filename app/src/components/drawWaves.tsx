@@ -5,7 +5,7 @@ export const DrawWaves = (props: {num: number, height: string, color: string}) =
       <>
         {
           [...Array(props.num)].map((_, i) => (
-              <Wave fill={props.color}
+              <Wave key={i} fill={props.color}
                     paused={false}
                     style={{
                       display: 'inline-block',

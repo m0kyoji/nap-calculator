@@ -42,6 +42,7 @@
 #timeSelectSlider:before {
   content: '0分';
   position: absolute;
+  display: block;
   top: -2em;
   left: 0;
   font-weight: 300;
@@ -50,6 +51,7 @@
 #timeSelectSlider:after {
   content: '8時間30分';
   position: absolute;
+  display: block;
   top: -2em;
   right: 0;
   font-weight: 300;
