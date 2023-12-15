@@ -18,7 +18,7 @@ export const TimeSelectBar = () => {
   }
 
   useEffect(() => {
-    const bgColor = 'rgba(229, 231, 235, 1)';
+    const bgColor = 'rgba(243, 243, 243, 1)';
     const recommendedTimeBgColor = 'rgb(88,195,125)';
     const borderList = bestNapLength(energyState, islandState)
     const gradientSettings = borderList.map((hash, i) => {
@@ -52,9 +52,11 @@ export const TimeSelectBar = () => {
           </div>
           <div id={'timeSelectSlider'} className={'mt-4 relative'}>
             <input
-                style={{background: `linear-gradient(90deg, ${gradientSettingState})`}}
+                style={{
+                  background: `linear-gradient(90deg, ${gradientSettingState})`,
+                }}
                 type="range"
-                className="slider w-full h-6 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700"
+                className="shadow-inner border slider w-full h-6 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700"
                 value={sleepTimeState}
                 min={0}
                 max={MAX_SLEEP_TIME}

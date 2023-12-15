@@ -31,7 +31,7 @@ export const InputForm = () => {
           <select
               defaultValue="greengrass"
               onChange={(event) => handleSelectChange(event)}
-              className={'shadow-inner block appearance-none border w-full bg-white text-center px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none text-neutral-800 text-2xl tracking-widest'}
+              className={'shadow-inner block appearance-none border w-full bg-white text-center px-4 py-2 pr-8 rounded leading-tight focus:outline-none text-neutral-800 text-2xl tracking-widest'}
               style={{backgroundColor: "#F3F3F3"}}
           >
             { islandDom }
@@ -44,7 +44,7 @@ export const InputForm = () => {
           <input
               type="number"
               id={'kabigon-power'}
-              className={'shadow-inner shadow appearance-none border rounded text-center w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-3xl tracking-widest'}
+              className={'shadow-inner appearance-none border rounded text-center w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none text-3xl tracking-widest'}
               onChange={(event) => handleChange(event)}
               placeholder={'0'}
               style={{backgroundColor: '#F3F3F3'}}
