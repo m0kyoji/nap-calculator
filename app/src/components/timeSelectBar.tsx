@@ -1,15 +1,39 @@
 "use client"
 import { MAX_SLEEP_TIME } from "@/constant/sleep";
+import { bestNapLength } from "@/functions/napLength";
+import { calcRedundantSleepinessPower, convertSleepinessPowerToTime, convertToHoursAndMinutes } from "@/functions/sleepTime";
 import { UseDisplaySleepTime } from "@/hooks/useDisplaySleepTime";
-import { inputSleepTimeAtom } from "@/lib/atoms";
-import { useAtom } from "jotai/index";
+import { inputEnergyAtom, inputSleepTimeAtom, selectedIslandAtom } from "@/lib/atoms";
+import { useAtom } from "jotai";
+import { useEffect, useState } from "react";
 
 export const TimeSelectBar = () => {
   const [sleepTimeState, setSleepTimeState] = useAtom(inputSleepTimeAtom);
+  const [energyState] = useAtom(inputEnergyAtom);
+  const [islandState] = useAtom(selectedIslandAtom);
+  const [gradientSettingState, setGradientSettingState] = useState("");
 
   const handleRangeChange = (event: any) => {
     setSleepTimeState(event.target.value);
   }
+
+  useEffect(() => {
+    const bgColor = 'rgba(229, 231, 235, 1)';
+    const recommendedTimeBgColor = 'rgb(88,195,125)';
+    const borderList = bestNapLength(energyState, islandState)
+    const gradientSettings = borderList.map((hash, i) => {
+      const redundantPower:number = calcRedundantSleepinessPower(hash.daytime.value, hash.nighttime.value, energyState)
+      return [
+        Math.round(convertSleepinessPowerToTime(hash.daytime.value, energyState)),
+        Math.round(convertSleepinessPowerToTime(redundantPower, energyState))
+      ]
+    }).reduce((accumulator, currentValue) => {
+      const start = currentValue[0]/MAX_SLEEP_TIME*100;
+      const end = (currentValue[0]+currentValue[1])/MAX_SLEEP_TIME*100;
+      return `${accumulator}, ${bgColor} ${start}%, ${recommendedTimeBgColor} ${start}%, ${recommendedTimeBgColor} ${end}%, ${bgColor} ${end}%`;
+    }, `${bgColor} 0%`) + `, ${bgColor} 100%`
+    setGradientSettingState(gradientSettings);
+  },[energyState, islandState])
 
   return (
       <>
@@ -28,6 +52,7 @@ export const TimeSelectBar = () => {
           </div>
           <div id={'timeSelectSlider'} className={'mt-4 relative'}>
             <input
+                style={{background: `linear-gradient(90deg, ${gradientSettingState})`}}
                 type="range"
                 className="slider w-full h-6 rounded-lg appearance-none cursor-pointer bg-gray-200 dark:bg-gray-700"
                 value={sleepTimeState}

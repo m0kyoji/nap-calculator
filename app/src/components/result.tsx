@@ -2,9 +2,9 @@
 
 import { ENERGY_BORDER } from "@/constant/energy";
 import { ISLANDS } from "@/constant/islands";
-import { MAX_SLEEP_TIME } from "@/constant/sleep";
+import { MAX_SLEEP_SCORE, MAX_SLEEP_TIME } from "@/constant/sleep";
 import { bestNapLength } from "@/functions/napLength";
-import { convertSleepinessPowerToTime, convertToHoursAndMinutes } from "@/functions/sleepTime";
+import { calcRedundantSleepinessPower, convertSleepinessPowerToTime, convertToHoursAndMinutes } from "@/functions/sleepTime";
 import { useCalcEncounterNumb } from "@/hooks/useCalcEncounterNumb";
 import { UseCalcNemukePower } from "@/hooks/useCalcNemukePower";
 import { UseCalcSleepScore } from "@/hooks/useCalcSleepScore";
@@ -35,10 +35,10 @@ export const Result = () => {
 
   const getBestNapLength = useMemo(() => {
     const napLength = getNapLength;
-    const dayTime:number = napLength[0][0].value;
-    const night:number = napLength[0][1].value;
-    const redundantTime:number = (energyState * 100) - (night + dayTime);
-    return dayTime + (redundantTime/2);
+    const daytime:number = napLength[0].daytime.value;
+    const nighttime:number = napLength[0].nighttime.value;
+    const redundantPower:number = calcRedundantSleepinessPower(daytime, nighttime, energyState)
+    return daytime + (redundantPower/2);
   },[energyState, islandState])
 
   useEffect(() => {
