@@ -38,7 +38,7 @@ export const TimeSelectBar = () => {
   return (
       <>
         <div
-            className={'mt-10 py-4 px-6 w-full max-w-sm bg-white rounded-none lg:rounded-3xl shadow-lg'}
+            className={'mt-10 pb-10 sm:pb-4 pt-4 px-6 w-full max-w-sm bg-white rounded-none lg:rounded-3xl shadow-lg'}
             style={{marginLeft: 'auto', marginRight: 'auto', maxWidth: '1024px'}}
         >
           <label className="block text-gray-700 text-sm text-center font-thin" htmlFor="sleep-time">
