@@ -1,17 +1,11 @@
 import { ENERGY_BORDER } from "@/constant/energy";
 import { ISLANDS } from "@/constant/islands";
 
-type HashPair = {
-  daytime: { key: number; value: number };
-  nighttime: { key: number; value: number };
-};
-
 export function bestNapLength(energy: number, islandId: number) {
   const island = ISLANDS.find((island) => island.id == islandId) || ISLANDS[0]
   const borders = filterHashByValue(ENERGY_BORDER[island.name], (energy) * 100);
   return getValidCombinations(borders, (energy) * 100);
 }
-
 
 function filterHashByValue(hash: { [key: number]: number }, x: number): { [key: number]: number } {
   const filteredHash: { [key: number]: number } = {};

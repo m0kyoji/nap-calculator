@@ -1,4 +1,4 @@
-import GoogleAnalytics from "@/components/googleAnalytics";
+import GoogleAnalytics from "@/components/common/googleAnalytics";
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'

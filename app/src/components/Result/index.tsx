@@ -2,24 +2,23 @@
 
 import { ENERGY_BORDER } from "@/constant/energy";
 import { ISLANDS } from "@/constant/islands";
-import { MAX_SLEEP_SCORE, MAX_SLEEP_TIME } from "@/constant/sleep";
-import { bestNapLength } from "@/functions/napLength";
+import { MAX_SLEEP_TIME } from "@/constant/sleep";
 import { calcRedundantSleepinessPower, convertSleepinessPowerToTime, convertToHoursAndMinutes } from "@/functions/sleepTime";
 import { useCalcEncounterNumb } from "@/hooks/useCalcEncounterNumb";
-import { UseCalcNemukePower } from "@/hooks/useCalcNemukePower";
-import { UseCalcSleepScore } from "@/hooks/useCalcSleepScore";
-import { UseDisplaySleepTime } from "@/hooks/useDisplaySleepTime";
-import { inputEnergyAtom, inputSleepTimeAtom, selectedIslandAtom } from "@/lib/atoms";
+import { useCalcNemukePower } from "@/hooks/useCalcNemukePower";
+import { useCalcSleepScore } from "@/hooks/useCalcSleepScore";
+import { useDisplaySleepTime } from "@/hooks/useDisplaySleepTime";
+import { inputEnergyAtom, inputSleepTimeAtom, napLengthAtom, selectedIslandAtom } from "@/lib/atoms";
 import { useAtom } from 'jotai'
-import React, { useEffect, useMemo } from 'react'
-import { BsMoonStars } from "react-icons/bs";
-import { BsSun } from "react-icons/bs";
+import React, { useMemo } from 'react'
+import { BsMoonStars, BsSun } from "react-icons/bs";
 
 export const Result = () => {
 
-  const [sleepTimeState, setSleepTimeState] = useAtom(inputSleepTimeAtom);
+  const [sleepTimeState] = useAtom(inputSleepTimeAtom);
   const [energyState] = useAtom(inputEnergyAtom);
   const [islandState] = useAtom(selectedIslandAtom);
+  const [napLengthState] = useAtom(napLengthAtom);
 
   const calcNightSleepTime:number = useMemo(() => MAX_SLEEP_TIME - sleepTimeState, [sleepTimeState])
 
@@ -29,30 +28,19 @@ export const Result = () => {
     return Math.round((borderValues[borderKey] / energyState) * MAX_SLEEP_TIME / 100) || 0;
   }
 
-  const getNapLength = useMemo(() => {
-    return bestNapLength(energyState, islandState)
-  },[energyState, islandState])
-
-  const getBestNapLength = useMemo(() => {
-    const napLength = getNapLength;
-    const daytime:number = napLength[0].daytime.value;
-    const nighttime:number = napLength[0].nighttime.value;
-    const redundantPower:number = calcRedundantSleepinessPower(daytime, nighttime, energyState)
-    return daytime + (redundantPower/2);
-  },[energyState, islandState])
-
-  useEffect(() => {
-    setSleepTimeState(convertSleepinessPowerToTime(getBestNapLength, energyState));
-  },[energyState, islandState])
+  const bestNapLength:{hours: number, minutes: number} = useMemo(() => {
+    const redundantPower:number = calcRedundantSleepinessPower(napLengthState[0].daytime.value, napLengthState[0].nighttime.value, energyState)
+    return convertToHoursAndMinutes(convertSleepinessPowerToTime(napLengthState[0].daytime.value + (redundantPower/2), energyState));
+  }, [napLengthState])
 
   return (
       <>
         <div className={'mt-8 flex flex-col justify-center items-center'}>
           <div className={'text-md font-light'}>おすすめする、おひる寝の長さ</div>
           <div id={'recommendedTime'} className={'mt-1 flex justify-center items-end gap-1 relative px-3'}>
-            <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).hours || 0}</span>
+            <span className={'text-4xl tracking-wide'}>{bestNapLength.hours || 0}</span>
             <span className={'text-2xl tracking-wide'}>時間</span>
-            <span className={'text-4xl tracking-wide'}>{convertToHoursAndMinutes(convertSleepinessPowerToTime(getBestNapLength, energyState)).minutes || 0}</span>
+            <span className={'text-4xl tracking-wide'}>{bestNapLength.minutes || 0}</span>
             <span className={'text-2xl tracking-wide'}>分</span>
           </div>
 
@@ -76,7 +64,7 @@ export const Result = () => {
                     <span>睡眠スコア</span>
                   </div>
                   <div className={'text-right'} style={{minWidth: '7em'}}>
-                    <span>{Math.round(UseCalcSleepScore(sleepTimeState))}</span>
+                    <span>{Math.round(useCalcSleepScore(sleepTimeState))}</span>
                   </div>
                 </div>
                 <div className={'px-2 flex justify-between'}>
@@ -84,7 +72,7 @@ export const Result = () => {
                     <span>ねむけパワー</span>
                   </div>
                   <div className={'text-right'} style={{minWidth: '7em'}}>
-                    <span>{Math.round(UseCalcNemukePower(sleepTimeState, energyState)).toLocaleString()}</span>
+                    <span>{Math.round(useCalcNemukePower(sleepTimeState, energyState)).toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -104,7 +92,7 @@ export const Result = () => {
                     <span>睡眠スコア</span>
                   </div>
                   <div className={'text-right'} style={{minWidth: '7em'}}>
-                    <span>{Math.round(UseCalcSleepScore(calcNightSleepTime))}</span>
+                    <span>{Math.round(useCalcSleepScore(calcNightSleepTime))}</span>
                   </div>
                 </div>
                 <div className={'px-2 flex justify-between'}>
@@ -112,12 +100,12 @@ export const Result = () => {
                     <span>ねむけパワー</span>
                   </div>
                   <div className={'text-right'} style={{minWidth: '7em'}}>
-                    <span>{Math.round(UseCalcNemukePower(calcNightSleepTime, energyState)).toLocaleString()}</span>
+                    <span>{Math.round(useCalcNemukePower(calcNightSleepTime, energyState)).toLocaleString()}</span>
                   </div>
                 </div>
                 <div>
                   <p className={'mt-1 font-light text-xs text-center block'}>
-                    {`最低で約 ${UseDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime, energyState))).hours}時間${UseDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime, energyState))).minutes}分 寝る必要があります`}
+                    {`最低で約 ${useDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime, energyState))).hours}時間${useDisplaySleepTime(requireSleepTime(islandState, useCalcEncounterNumb(islandState, calcNightSleepTime, energyState))).minutes}分 寝る必要があります`}
                   </p>
                 </div>
               </div>

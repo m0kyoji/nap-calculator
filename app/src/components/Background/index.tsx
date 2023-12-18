@@ -1,5 +1,5 @@
-import { DrawWaves } from "@/components/drawWaves";
-import Slider from "@/components/slider";
+import { DrawWaves } from "@/components/Background/elements/drawWaves";
+import Slider from "@/components/common/slider";
 import { ISLANDS } from "@/constant/islands";
 import { useMemo } from "react";
 
