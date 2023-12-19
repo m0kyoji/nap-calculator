@@ -60,7 +60,6 @@ export const InputForm = () => {
               onChange={(event) => handleChange(event)}
               placeholder={'0'}
               style={{backgroundColor: '#F3F3F3'}}
-              maxLength={7}
           />
         </div>
       </div>

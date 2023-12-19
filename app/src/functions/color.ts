@@ -1,5 +1,4 @@
 import { MAX_SLEEP_TIME } from "@/constant/sleep";
-import { bestNapLength } from "@/functions/napLength";
 import { calcRedundantSleepinessPower, convertSleepinessPowerToTime } from "@/functions/sleepTime";
 
 export const genSleepTimeSliderBGCValue = (energy: number, island: number, borderList: HashPair[]) => {
