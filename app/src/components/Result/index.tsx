@@ -56,7 +56,7 @@ export const Result = () => {
               </div>
               <div className={'mt-6 text-center'}>
                 <span className={'text-4xl font-light'}>{useCalcEncounterNumb(islandState, sleepTimeState, energyState)}</span>
-                <span className={'text-1xl font-medium'}>匹</span>
+                <span className={'text-1xl font-medium align-baseline ml-1'}>匹</span>
               </div>
               <div className={'flex flex-col gap-2 mt-4'}>
                 <div className={'px-2 flex justify-between'}>
@@ -84,7 +84,7 @@ export const Result = () => {
               </div>
               <div className={'mt-6 text-center'}>
                 <span className={'text-4xl font-light'}>{useCalcEncounterNumb(islandState, calcNightSleepTime, energyState)}</span>
-                <span className={'text-1xl font-medium'}>匹</span>
+                <span className={'text-1xl font-medium align-baseline ml-1'}>匹</span>
               </div>
               <div className={'flex flex-col gap-2 mt-4'}>
                 <div className={'px-2 flex justify-between'}>
