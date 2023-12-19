@@ -4,7 +4,7 @@ import { genSleepTimeSliderBGCValue } from "@/functions/color";
 import { useDisplaySleepTime } from "@/hooks/useDisplaySleepTime";
 import { inputEnergyAtom, inputSleepTimeAtom, napLengthAtom, selectedIslandAtom } from "@/lib/atoms";
 import { useAtom } from "jotai";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
 export const TimeSelectBar = () => {
   const [sleepTimeState, setSleepTimeState] = useAtom(inputSleepTimeAtom);
@@ -18,7 +18,7 @@ export const TimeSelectBar = () => {
 
   const gradientValue = useMemo(() => {
     return genSleepTimeSliderBGCValue(energyState, islandState, napLengthState);
-  },[energyState, islandState])
+  },[napLengthState])
 
   return (
       <>
