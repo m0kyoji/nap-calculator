@@ -15,7 +15,7 @@ export const Header = () => {
       //   <h1 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">おひるね計算機</h1>
       // </div>
       <>
-        <div className={'fixed flex justify-end max-w-4xl left-0 right-0 m-auto'}
+        <div className={'fixed flex justify-end max-w-4xl top-2 left-0 right-2 m-auto'}
              style={{zIndex: 100}}
         >
           {
