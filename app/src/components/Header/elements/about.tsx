@@ -32,7 +32,7 @@ export const About = (props: {onClick: () => void}) => {
           <QA title={ 'どう使う？' }>
             <div>
               <p style={ { fontFeatureSettings: "palt" } }>
-                寝ている島の選択と、今のカビゴンパワーを入力するとおすすめのおひる寝時間が表示されます。
+                寝ている島と今のカビゴンパワーを入力するとおすすめのおひる寝時間が表示されます。
               </p>
               <p style={ { fontFeatureSettings: "palt" } }>
                 おすすめ時間を参考におひる寝をしましょう！
