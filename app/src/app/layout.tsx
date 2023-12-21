@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'おひるね計算機',
-  description: 'おひるね計算機',
+  description: 'ポケモンスリープでおひる寝をする際の最適な長さがわかります。最適な長さのお昼寝をすることで、効率的にポケモンと出会うことができます。',
 }
 
 export default function RootLayout({

@@ -1,7 +1,7 @@
 'use client'
 import { About } from "@/components/Header/elements/about";
-import { useState } from "react";
-import { BsFillQuestionCircleFill } from "react-icons/bs";
+import React, { useState } from "react";
+import { CiCircleQuestion, CiCircleRemove } from "react-icons/ci";
 
 export const Header = () => {
   const [aboutIsViewState, setAboutIsViewState] = useState<boolean>(false)
@@ -15,10 +15,19 @@ export const Header = () => {
       //   <h1 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">おひるね計算機</h1>
       // </div>
       <>
-        {/*<BsFillQuestionCircleFill onClick={handleQuestion}/>*/}
-        {/*{*/}
-        {/*  aboutIsViewState && <About onClick={handleQuestion}/>*/}
-        {/*}*/}
+        <div className={'fixed flex justify-end max-w-4xl left-0 right-0 m-auto'}
+             style={{zIndex: 100}}
+        >
+          {
+            aboutIsViewState &&
+              <CiCircleRemove className={'w-9 h-9 rounded-full bg-white shadow-lg cursor-pointer'} onClick={handleQuestion}/>
+              ||
+              <CiCircleQuestion className={'w-9 h-9 rounded-full bg-white shadow-lg cursor-pointer'} onClick={handleQuestion}/>
+          }
+        </div>
+        {
+          aboutIsViewState && <About onClick={handleQuestion}/>
+        }
       </>
   )
 }
