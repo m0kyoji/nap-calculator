@@ -12,8 +12,8 @@ export const About = (props: {onClick: () => void}) => {
         >
         </div>
         <div
-            className={ 'p-2 fixed left-0 right-0 max-w-lg mx-auto w-full ' }
-            style={ { zIndex: 41 } }>
+            className={ 'p-2 fixed left-0 right-0 mx-auto w-full ' }
+            style={ { zIndex: 41, maxWidth: '41em' } }>
           <div
               className={ 'flex flex-col gap-8 items-center p-10 bg-white rounded-3xl shadow-lg' }
               style={ { zIndex: 41 } }
@@ -21,7 +21,8 @@ export const About = (props: {onClick: () => void}) => {
             <QA title={ '何ができる？' }>
               <div>
                 <p style={ { fontFeatureSettings: "palt" } }>
-                  ポケモンスリープでおひる寝をする際の最適な長さがわかります。最適な長さのおひる寝をすることで、効率的にポケモンと出会えます。
+                  ポケモンスリープでおひる寝をする際の最適な長さがわかります。<br/>
+                  最適な長さのおひる寝をすることで、効率的にポケモンと出会えます。
                 </p>
               </div>
               <div className={ 'mt-4 bg-gray-50 rounded-xl p-3 text-sm' }>
