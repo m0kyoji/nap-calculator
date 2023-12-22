@@ -54,7 +54,7 @@ export const InputForm = () => {
           </div>
           <div className={ 'w-full max-w-sm' }>
             <label className="block text-gray-700 text-md font-light text-center mb-2" htmlFor="kabigon-power">
-              今のカビゴンパワーは？
+              今のカビゴンエナジーは？
             </label>
             <input
                 type="number"

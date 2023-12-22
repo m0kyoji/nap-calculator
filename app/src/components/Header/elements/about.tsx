@@ -35,7 +35,7 @@ export const About = (props: {onClick: () => void}) => {
             <QA title={ 'どう使う？' }>
               <div>
                 <p style={ { fontFeatureSettings: "palt" } }>
-                  寝ている島と今のカビゴンパワーを入力するとおすすめのおひる寝時間が表示されます。
+                  寝ている島と今のカビゴンエナジーを入力するとおすすめのおひる寝時間が表示されます。
                 </p>
                 <p style={ { fontFeatureSettings: "palt" } }>
                   おすすめ時間を参考におひる寝をしましょう！
@@ -45,19 +45,19 @@ export const About = (props: {onClick: () => void}) => {
             <QA title={ 'どうやって計算しているの？' }>
               <div>
                 <p style={ { fontFeatureSettings: "palt" } }>
-                  睡眠レポートを提出する時に出会うことができる匹数は、ねむけパワーとそれに対する<Link
+                  睡眠リサーチを行う際に出会うことができるポケモンの数は、ねむけパワーとそれに対する<Link
                     href={ 'https://wikiwiki.jp/poke_sleep/%E3%83%AF%E3%82%AB%E3%82%AF%E3%82%B5%E6%9C%AC%E5%B3%B6' }
                     className={ 'underline underline-offset-4 text-pink-600' } prefetch={ false }
                     target="_blank">各島毎の基準値</Link>を元に決定されています。
                 </p>
                 <p style={ { fontFeatureSettings: "palt" } }>
-                  おひるね計算機では、選択された島と入力されたカビゴンパワーを元にねむけパワーを計算し、基準値と照らし合わせることで出会うことができる最大匹数を推定しています。
+                  おひるね計算機では、計算したねむけパワーを島の基準値と照らし合わせることで、出会うことができるポケモンの数が最大となる時間を推定しています。
                 </p>
               </div>
               <div className={ 'mt-4 bg-gray-50 rounded-xl p-3 text-sm' }>
                 <p className={ 'px-2 pb-2 font-medium text-gray-800' }>各計算方法</p>
                 <ul className={ 'list-disc pl-6 text-gray-800' }>
-                  <li><span>ねむけパワー =（カビゴンパワー x 睡眠スコア）</span></li>
+                  <li><span>ねむけパワー =（カビゴンエナジー x 睡眠スコア）</span></li>
                   <li><span>睡眠スコア =（寝た分数 / 510 x 100）</span></li>
                 </ul>
               </div>
