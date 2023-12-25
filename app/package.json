@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sentry/wizard": "^3.20.1",
     "jotai": "^2.5.1",
     "next": "14.0.3",
     "react": "^18",
