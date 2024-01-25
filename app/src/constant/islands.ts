@@ -18,5 +18,10 @@ export const ISLANDS = [
         id: 4,
         name: 'snowdrop',
         kana_name: 'ウノハナ雪原'
+    },
+    {
+        id: 5,
+        name: 'lapis',
+        kana_name: 'ラピスラズリ湖畔'
     }
 ]
