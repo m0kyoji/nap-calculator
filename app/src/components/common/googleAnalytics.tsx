@@ -1,6 +1,6 @@
 "use client";
 
-import { GA_TAG_ID, IS_GATAG, pageview } from "@/lib/gtag";
+import { GA_TAG_ID, IS_GA_TAG, pageView } from "@/lib/gtag";
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
@@ -10,11 +10,11 @@ const GoogleAnalytics = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!IS_GATAG) {
+    if (!IS_GA_TAG) {
       return
     }
     const url = pathname + searchParams.toString()
-    pageview(url)
+    pageView(url)
   }, [pathname, searchParams])
 
   return (
