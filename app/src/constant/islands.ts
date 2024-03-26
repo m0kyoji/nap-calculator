@@ -1,27 +1,42 @@
 export const ISLANDS = [
-    {
-        id: 1,
-        name: 'greengrass',
-        kana_name: 'ワカクサ本島'
-    },
-    {
-        id: 2,
-        name: 'cyan',
-        kana_name: 'シアンの浜辺'
-    },
-    {
-        id: 3,
-        name: 'taupe',
-        kana_name: 'トープ洞窟'
-    },
-    {
-        id: 4,
-        name: 'snowdrop',
-        kana_name: 'ウノハナ雪原'
-    },
-    {
-        id: 5,
-        name: 'lapis',
-        kana_name: 'ラピスラズリ湖畔'
+  {
+    id     : 1,
+    name   : 'greengrass',
+    locales: {
+      ja: 'ワカクサ本島',
+      en: 'Greengrass Isle',
     }
+  },
+  {
+    id     : 2,
+    name   : 'cyan',
+    locales: {
+      ja: 'シアンの浜辺',
+      en: 'Cyan Beach',
+    }
+  },
+  {
+    id     : 3,
+    name   : 'taupe',
+    locales: {
+      ja: 'トープ洞窟',
+      en: 'Taupe Hollow',
+    }
+  },
+  {
+    id     : 4,
+    name   : 'snowdrop',
+    locales: {
+      ja: 'ウノハナ雪原',
+      en: 'Snowdrop Tundra',
+    }
+  },
+  {
+    id     : 5,
+    name   : 'lapis',
+    locales: {
+      ja: 'ラピスラズリ湖畔',
+      en: 'Lapis Lakeside',
+    }
+  }
 ]

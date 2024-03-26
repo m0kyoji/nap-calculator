@@ -21,29 +21,30 @@ const Slider = ({ items }: SliderProps) => {
   const swiperRef: any = useRef(null);
 
   useEffect(() => {
-    if (swiperRef.current && swiperRef.current.swiper) {
+    if ( swiperRef.current && swiperRef.current.swiper ) {
       swiperRef.current.swiper.slideTo(islandState - 1)
     }
-  },[islandState])
+  }, [islandState])
 
   return (
-      <div style={{width: '100vw', height: '100vh'}}>
+      <div style={ { width: '100vw', height: '100vh' } }>
         <Swiper
-            modules={[EffectFade]}
-            ref={swiperRef}
-            slidesPerView={1}
-            centeredSlides={true}
-            allowTouchMove={false}
-            effect={'fade'}
-            fadeEffect={{crossFade: true}}
-            pagination={{
+            modules={ [EffectFade] }
+            ref={ swiperRef }
+            slidesPerView={ 1 }
+            centeredSlides={ true }
+            allowTouchMove={ false }
+            effect={ 'fade' }
+            fadeEffect={ { crossFade: true } }
+            pagination={ {
               clickable: true,
-            }}>
-          {items.map((item, _i) => (
-              <SwiperSlide key={item.id} style={{width: '100vw', height: '100vh'}}>
-                <Image src={item.content} priority={_i == 0} alt="island_images" fill style={{ objectFit: 'contain' }}/>
+            } }>
+          { items.map((item, _i) => (
+              <SwiperSlide key={ item.id } style={ { width: '100vw', height: '100vh' } }>
+                <Image src={ item.content } priority={ _i == 0 } alt="island_images" fill
+                       style={ { objectFit: 'contain' } }/>
               </SwiperSlide>
-          ))}
+          )) }
         </Swiper>
       </div>
   )

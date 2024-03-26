@@ -10,7 +10,7 @@ const GoogleAnalytics = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!IS_GA_TAG) {
+    if ( !IS_GA_TAG ) {
       return
     }
     const url = pathname + searchParams.toString()
@@ -21,17 +21,17 @@ const GoogleAnalytics = () => {
       <>
         <Script
             strategy="lazyOnload"
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TAG_ID}`}
+            src={ `https://www.googletagmanager.com/gtag/js?id=${ GA_TAG_ID }` }
         />
         <Script id="gtag-init" strategy="afterInteractive">
-          {`
+          { `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${GA_TAG_ID}', {
+          gtag('config', '${ GA_TAG_ID }', {
             page_path: window.location.pathname,
           });
-        `}
+        ` }
         </Script>
       </>
   );

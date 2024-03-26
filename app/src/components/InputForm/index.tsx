@@ -3,14 +3,18 @@ import { ISLANDS } from "@/constant/islands";
 import { bestNapLength } from "@/functions/napLength";
 import { calcRedundantSleepinessPower, convertSleepinessPowerToTime } from "@/functions/sleepTime";
 import { inputEnergyAtom, inputSleepTimeAtom, napLengthAtom, selectedIslandAtom } from "@/lib/atoms";
+import { t } from "i18next";
 import { useAtom } from 'jotai'
 import React, { useEffect, useMemo } from 'react'
+import { useCurrentLocale } from 'next-i18n-router/client';
+import { i18nConfig } from "@/lib/i18n/config";
 
 export const InputForm = () => {
   const [islandState, setIslandState] = useAtom(selectedIslandAtom);
   const [energyState, setEnergyState] = useAtom(inputEnergyAtom);
   const [napLengthState, setNapLengthState] = useAtom(napLengthAtom);
   const [, setSleepTimeState] = useAtom(inputSleepTimeAtom);
+  const locale = useCurrentLocale(i18nConfig) || "";
 
   const handleChange = (event: any) => {
     setEnergyState(event.target.value);
@@ -22,25 +26,25 @@ export const InputForm = () => {
 
   useEffect(() => {
     setNapLengthState(bestNapLength(energyState, islandState))
-  },[energyState, islandState])
+  }, [energyState, islandState])
 
   useEffect(() => {
-    const redundantPower:number = calcRedundantSleepinessPower(napLengthState[0].daytime.value, napLengthState[0].nighttime.value, energyState)
-    setSleepTimeState(convertSleepinessPowerToTime(napLengthState[0].daytime.value + (redundantPower/2), energyState));
-  },[napLengthState])
+    const redundantPower: number = calcRedundantSleepinessPower(napLengthState[0].daytime.value, napLengthState[0].nighttime.value, energyState)
+    setSleepTimeState(convertSleepinessPowerToTime(napLengthState[0].daytime.value + ( redundantPower / 2 ), energyState));
+  }, [napLengthState])
 
   const islandDom = useMemo(() => ISLANDS.map((island: IslandsProps, index: number) => (
-      <option key={index} value={ island.id }>{ island.kana_name }</option>
-  )),[])
+      <option key={ index } value={ island.id }>{ island.locales[locale] }</option>
+  )), [])
 
   return (
-      <div className={'p-2'}>
+      <div className={ 'p-2' }>
         <div
             className={ 'pt-8 px-10 pb-10 bg-white w-auto flex flex-col justify-center items-center rounded-3xl shadow-lg gap-y-8' }
             style={ { maxWidth: '640px', margin: '0 auto' } }>
           <div className={ 'w-full max-w-sm' }>
             <label className="block text-gray-700 text-md font-light text-center mb-2" htmlFor="select-island">
-              どこで寝る？
+              { t('top where sleep') }
             </label>
             <select
                 id={ 'select-island' }
@@ -54,7 +58,7 @@ export const InputForm = () => {
           </div>
           <div className={ 'w-full max-w-sm' }>
             <label className="block text-gray-700 text-md font-light text-center mb-2" htmlFor="kabigon-power">
-              今のカビゴンエナジーは？
+              { t('top Snorlax energy') }
             </label>
             <input
                 type="number"

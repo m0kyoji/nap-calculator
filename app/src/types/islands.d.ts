@@ -1,5 +1,9 @@
 type IslandsProps = {
   id: number,
   name: string,
-  kana_name: string,
+  locales: LocaleObject,
 }
+
+type LocaleObject = {
+  [key: string]: string;
+};

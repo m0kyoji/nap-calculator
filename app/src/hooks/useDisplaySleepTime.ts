@@ -2,11 +2,11 @@ import { convertToHoursAndMinutes } from "@/functions/sleepTime";
 import { useEffect, useState } from "react";
 
 export const useDisplaySleepTime = (time: number) => {
-  const [timeState, setTimeState] = useState<{hours: number, minutes: number}>({hours: 0, minutes: 0})
+  const [timeState, setTimeState] = useState<{ hours: number, minutes: number }>({ hours: 0, minutes: 0 })
 
   useEffect(() => {
     setTimeState(convertToHoursAndMinutes(time));
-  },[time]);
+  }, [time]);
 
   return timeState;
 }

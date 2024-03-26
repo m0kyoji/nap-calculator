@@ -7,7 +7,7 @@ export const ENERGY_BORDER: EnergyBorder = {
     7: 8333970,
     8: 19564316,
   },
-  cyan: {
+  cyan      : {
     3: 0,
     4: 1580337,
     5: 3512920,
@@ -15,7 +15,7 @@ export const ENERGY_BORDER: EnergyBorder = {
     7: 13491088,
     8: 30497800,
   },
-  taupe: {
+  taupe     : {
     3: 0,
     4: 1838628,
     5: 4627194,
@@ -23,7 +23,7 @@ export const ENERGY_BORDER: EnergyBorder = {
     7: 19564376,
     8: 43762600,
   },
-  snowdrop: {
+  snowdrop  : {
     3: 0,
     4: 2832804,
     5: 7169800,
@@ -31,7 +31,7 @@ export const ENERGY_BORDER: EnergyBorder = {
     7: 28775360,
     8: 66009600,
   },
-  lapis: {
+  lapis     : {
     3: 0,
     4: 3252513,
     5: 7865725,
