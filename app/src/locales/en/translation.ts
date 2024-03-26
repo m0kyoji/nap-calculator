@@ -6,7 +6,7 @@ export const en = {
     "power": "Drowsy Power",
     "hours": "h",
     "minutes": "m",
-    "unit": "pokemon",
+    "unit": "pokémon",
     "top where sleep": "Where to sleep?",
     "top Snorlax energy": "What is the current Snorlax energy?",
     "top recommended time": "Recommended nap duration",
