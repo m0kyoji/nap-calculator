@@ -38,5 +38,13 @@ export const ISLANDS = [
       ja: 'ラピスラズリ湖畔',
       en: 'Lapis Lakeside',
     }
+  },
+  {
+    id: 6,
+    name: 'gold',
+    locales: {
+      ja: 'ゴールド旧発電所',
+      en: 'Old Gold Power Plant',
+    }
   }
 ]
